@@ -1,0 +1,9 @@
+Host *    
+   IdentitiesOnly=yes
+Host bitbucket.org
+   IdentityFile ~/.ssh/privatekey
+ 
+
+
+
+

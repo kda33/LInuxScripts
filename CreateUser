@@ -1,0 +1,9 @@
+cat <<EOF > script.sh && chmod +x script.sh && ./script.sh
+#!/bin/bash
+read -p 'Username for the new user: ' newuser
+read -p 'Username of the user from wich we want to copy keys: ' keyuser
+sudo useradd -m -s /bin/bash \$newuser
+echo "\$newuser  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/\$newuser
+sudo cp -r /home/\$keyuser/.ssh/ /home/\$newuser/
+sudo chown -R \$newuser:\$newuser /home/\$newuser/.ssh/
+EOF
